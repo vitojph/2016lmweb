@@ -1,0 +1,214 @@
+---
+title: "Lenguajes de Marcas Ligeros: Wiki Markup | LMTW"
+author: "Víctor Peinado"
+date: "8-9 de marzo de 2016"
+output: rmarkdown::tufte_handout
+---
+
+# Lenguajes de Marcas Ligeros
+
+Los lenguajes de marcas ligeros[^lightml] son lenguajes de marcas para formatear documentos diseñados, en principio, para simplificar el proceso de codificar documentos en HTML o XML. 
+
+Todos ellos tienen en común que manejan una sintaxis sencilla y no intrusiva, puedan ser editados fácilmente desde cualquier editor de texto y son legibles tanto en su formato original de edición como en su versión renderizada.
+
+En esta asignatura vamos a centrarnos en tres de estos lenguajes que se utilizan en la Web: Wiki Markup y Markdown, aunque hay otros. Empecemos por el primero.
+
+# Wiki Markup
+
+Wiki Markup[^wikiml] es la sintaxis y el conjunto de palabras clave que usa el proyecto MediaWiki[^mediawiki] para publicar documentos. MediaWiki es el software sobre el que se construye Wikipedia y otros proyectos paralelos de Wikimedia Commons[^wikimedia] como Wiktionary[^wiktionary], Wikiquote[^wikiquote], Wikinews[^wikinews], Wikivoyage[^wikivoyage],  etc.
+
+Se trata de un *lenguaje de marcas ligero* que es fácilmente transformable en HTML. La principal ventaja es que permite teclear y formatear rápidamente páginas wiki, visualizables desde cualquier ordenador.
+
+Ten en cuenta que los navegadores no saben interpretar directamente Wiki Markup: para ello es necesario *convertirlo* previamente a HTML. De esta conversión se encarga el gestor de wikis Mediawiki.
+
+En los últimos tiempos, mucha gente ha mostrado su descontento con el progresivo aumento de complejidad de Wiki Markup. Por las necesidades de Wikipedia, el lenguaje ha ido adquiriendo nuevas funcionalidades y se ha hecho demasiado complejo. Muchos piensan que ya no sirve como ejemplo de *simplificación* de HTML.
+
+
+## Funcionalidades de Wiki Markup
+
+La sintaxis de Wiki Markup[^wikisyntax] permite fácilmente:
+
+- Estructurar el texto en epígrafes, párrafos, tablas, bloques de texto.
+
+- Modificar la apariencia del texto: cursivas, negritas, etc.
+
+- Insertar imágenes.
+
+- Insertar hipervínculos.
+
+- Organizar listas de elementos de manera ordenada.
+
+
+Además de todo lo anterior, en Wiki Markup podemos:
+
+- Crear automáticamente índices de contenidos.[^wikiindex]
+
+- Gestionar los interenlaces entre las distintas traducciones, redirecciones, las distintas versiones de una misma página de la wiki, etc.
+
+- Manejar referencias, citas, fuentes de artículos, etc.[^wikirefs]
+
+- Gestionar palabras clave que permiten la insercción de variables en el texto.[^wikivars]
+
+- Añadir información sobre pronunciación.[^wikipronuciation]
+
+- ...
+
+## Epígrafes y párrafos
+
+Los títulos se encierran entre pares de símbolos de igual (`=`), tantos como escalones queramos bajar en la jerarquía de títulos:
+
+    = Título de primer nivel = 
+    
+    == Título de segundo nivel ==
+
+    ===== Título de quinto nivel =====
+
+Los párrafos no se marcan explícitamente. Cualquier conjunto de líneas de texto seguidas será considerado un párrafo. Para separar párrafos, es necesario introducir doble retorno de carro (doble *intro*).
+
+    Lorem ipsum ad his scripta blandit partiendo, eum fastidii accumsan euripidis in...
+
+    Ius id vidit volumus mandamus, vide veritus democritum te nec...
+
+## Apariencia del texto
+
+El texto en *cursiva* se encierra entre dos pares de apóstrofos:
+
+    Este texto está en ''cursiva''. 
+
+El texto en **negrita** se encierra entre triples pares de apóstrofos: 
+
+    Este texto está en '''negrita'''.
+    
+Si es necesario formatear texto a la vez en ***Negrita y cursiva*** podemos encerrarlo entre cinco pares de apóstrofos: 
+
+    Este texto está en '''''requete marcado'''''.
+
+Para añadir pequeñas porciones de texto sin formato, que habitualmente aparecen con fuente de ancho fijo, podemos usar las etiquetsa `<code>`:
+  
+    <code>from nltk import corpus</code>
+
+
+## Listas no ordenadas
+
+- El inicio y final de las listas no se marca explícitamente. 
+
+- Los elementos de las listas se marcan con asterisco (`*`).
+
+- Las listas se pueden anidar.
+
+    `* Item 1`
+
+    `* Item 2`
+
+    `* Item 3`
+
+    `** Sub-item 3.1`
+
+    `*** Sub-item 3.1.1`
+
+    `* Item 4`
+
+
+## Listas ordenadas
+
+- Como en el caso anterior, el inicio y final de las listas no se marca explícitamente. 
+
+- Los elementos de las listas se marcan con una almohadilla (`#`).
+
+- Las listas se pueden anidar.
+
+    `# Item 1`
+
+    `# Item 2`
+
+    `# Item 3`
+
+    `## Sub-item 3.1`
+
+    `### Sub-item 3.1.1`
+
+    `# Item 4`
+
+
+## Hiperenlaces
+
+Los enlaces se especifican entre corchetes, como en `[enlace]`, pero habitualmente encontramos distintos tipos de enlaces[^wikilinks] y hay sutiles diferencia sa la hora de formatearlos:
+
+- **Enlaces internos**, que apuntan a otras páginas de la propia wiki.
+
+    `Para volver al inicio, visita la página [[Index]].`
+
+    `Para volver al inicio, visita la [[Index|página inicial]]`
+
+- **Enlaces externos**, que apuntan a cualquier URL fuera de la wiki.
+
+    `Visita la página [http://www.ucm.es].`
+
+    `Visita la página de la [http://www.ucm.es Universidad Complutense de
+    Madrid].`
+
+
+## Imágenes
+
+Como mecanismo de control, en Wikipedia no se pueden incluir imágenes que no hayan sido previamente subidas a Mediawiki. Pero una vez que las imágenes se han cargado, la sintaxis para incluirlas en una página es la siguiente:
+
+    [[File:wiki.png]]
+
+- Para incluir una imagen con un texto alternativo, podemos hacer lo siguiente:
+
+    `[[File:wiki.png|alt=Puzzle globe logo]]`
+
+- Para insertar imágenes que funcionen como un enlace, la sintaxis es:
+
+    `[[File:wiki.png|link=Wikipedia]]`
+
+
+# Ejercicio
+
+Os animo a participar en Wikipedia o en cualquiera de sus proyectos hermanos, pero para juguetear con Wiki Markup y para realizar parte de las prácticas de esta asignatura he creado una wiki en Github[^wikigithub]. 
+
+- Para poder editar, créate una cuenta de usuario en Github[^github] entrando en https://github.com/join.
+
+- Añade una página (haz clic en **New Page**) y elige el título: para que pueda identificar la página de cada uno, vamos a seguir la siguiente convención: titula la página con tu apellido y la primera letra de tu nombre. Si te llamas Pepito Pérez, llama a tu página `perezp`. 
+
+- Configura el modo de edición como **MediaWiki** y elabora una entrada a modo de página de presentación demostrando que eres capaz de manejarte con las reglas de sintaxis básicas de Wiki Markup. No es necesario que la información sea verdad, puedes crearte un *alter ego* si lo prefieres o elaborar una página con cosas que te interesen, no necesariamente relacionadas con la Lingüística. Sé creativo y pásatelo bien.
+
+- A medida que vayas añadiendo información, previsualiza el resultado final pulsando en **Preview**. Vuelve a **Write** para seguir editando. 
+
+- Si necesitas almacenar una copia, añade un pequeño mensaje explicando los cambios y haz clic en **Save Page**.
+
+- Cuando hayas terminado, asegúrate de que todo está a tu gusto, almacena la copia definitiva y avísame enviándome un mensaje de correo-e.
+
+
+[^wikigithub]: https://github.com/vitojph/2016lmweb/wiki
+
+[^github]: GitHub: https://github.com/
+
+[^lightml]: Lightweight Markup Language http://en.wikipedia.org/wiki/Lightweight_markup_language
+
+[^wikimedia]: Wikimedia Commons http://commons.wikimedia.org/wiki/Main_Page
+
+[^wikiquote]: Wikiquote http://en.wikiquote.org
+
+[^wiktionary]: Wiktionary http://en.wiktionary.org
+
+[^wikinews]: Wikinews http://en.wikinews.org
+
+[^wikivoyage]: Wikivoyage http://en.wikivoyage.org
+
+[^wikiml]: Wiki Markup http://en.wikipedia.org/wiki/Help:Wiki_markup
+
+[^mediawiki]: Mediawiki http://www.mediawiki.org
+
+[^wikisyntax]: Sintaxis de Wiki Markup http://en.wikipedia.org/wiki/Help:Wiki_markup
+
+[^wikirefs]: Wiki Markup: referencias y citas http://en.wikipedia.org/wiki/Help:Wiki_markup#References_and_citing_sources
+
+[^wikiindex]: Wiki Markup: índices http://en.wikipedia.org/wiki/Category:Wikipedia_table_of_contents_templates
+
+[^wikivars]: Wiki Markup: variables http://en.wikipedia.org/wiki/Help:Wiki_markup#Variables
+
+[^wikipronuciation]: Wiki Markup: pronunciation http://en.wikipedia.org/wiki/Help:Wiki_markup#Pronunciation_aids
+
+[^wikilinks]: Wiki Markup: links http://en.wikipedia.org/wiki/Help:Wiki_markup#Links_and_URLs
+
