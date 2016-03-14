@@ -257,7 +257,7 @@ Para practicar con Markdown tenemos el wiki en Github[^wikigithub] y un blog en 
 
 [^sabores]: https://2015lmweb.wordpress.com/2015/03/04/markdown-de-sabores
 
-[^fuente]: https://raw.githubusercontent.com/vitojph/2015lmweb/master/LenguajesMarcasLigeros-Markdown.Rmd
+[^fuente]: https://raw.githubusercontent.com/vitojph/2016lmweb/master/LenguajesMarcasLigeros-Markdown.Rmd
 
 [^video1]: https://vimeo.com/121830786
 
