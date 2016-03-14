@@ -39,8 +39,8 @@ Si necesidad de hacer arte ASCII[^asciiart], vamos a tratar de replicar en forma
 
 [^carta]: https://abelsuing.files.wordpress.com/2010/02/carta-agradecimiento-abel-swing.jpg
 
-[^drae]: http://lema.rae.es/drae/?val=torre
+[^drae]: http://dle.rae.es/?id=a7GrYmZ
 
-[^tabla]: http://resultados.as.com/resultados/baloncesto/acb/2014_2015/clasificacion
+[^tabla]: http://resultados.as.com/resultados/baloncesto/acb/2015_2016/clasificacion
 
 [^yule]: http://vitojph.github.io/ling/lmweb/yule.pdf
