@@ -1,0 +1,238 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+
+<!--                  Tutorial Comentado de HTML
+									Lenguajes de Marcado y Tecnologías Web
+                    Última modificación: 29/04/2016
+
+
+HTML (Hypertext Mark-up Language) es un lenguaje de marcas orientado a codificar documentos para la Web. Su primera versión fue descrita en 1991 cuando Tim Berners-Lee trabajaba como investigador en el CERN. Para una descripción general sobre HTML, consulta http://es.wikipedia.org/wiki/HTML
+
+Desde los años 90 se han publicado varias versiones de HTML. Las primeras especificaciones estaban orientadas únicamente a dar formato a documentos hipertextuales. Con el paso del tiempo, las posteriores versiones han tratado de estandarizar los medios que se utilizan para publicar contenidos en la Web, accesibles desde cualquier dispositivo (ordenadores, móviles, tablets) y por cualquier persona (discapacitados o no).
+
+La característica general de la evolución del HTML que más nos interesa a nosotros es que los elementos HTML de las primeras versiones simplemente daban formato. A medida que ha pasado el tiempo, se han ido desechando los elementos de formato para adoptar elementos que marcan la estructura. Los documentos HTML modernos tratan de separar la semántica por un lado y el formato por otro.
+
+El W3C es el organismo encargado de publicar, entre otras cosas, las especificaciones de HTML. Paras más info: http://www.w3c.es
+-->
+
+<!-- Por si no ha quedado claro hasta ahora, en HTML los comentarios se escriben entre símbolos de comentario -->
+
+<!--
+Cualquier cosa que aparezca entre símbolos de comentario (aunque sean elementos HTML perfectamente válidos) será ignorado por el navegador y no tendrá ningún efecto en la estructura de la página-
+-->
+
+<!--
+Cualquier documento HTML está formado por varios elementos HTML. Todo elemento está compuesto por:
+  - una etiqueta de inicio: las etiquetas consisten en una palabra prefijada que aparece "encerrada" entre paréntesis angulares, como en <etiqueta>
+  - un contenido etiquetado: que puede ser una cadena vacía, una cadena de texto o incluso otro elemento HTML
+  - una etiqueta de fin o cierre de elemento: las etiquetas de cierra se indican con una barra / antes del nombre </etiqueta>
+
+Nótese que un elemento HTML puede etiquetar a otro(s) elementos(s) HTML. Es decir, existe una estructura jerárquica, con elementos "hijo" que dependen o cuelgan de elementos "padre".
+
+Aunque HTML no es sensible a mayúsculas o minúsculas y los navegadores entienden ambos tipos de etiquetas, el W3C recomienda escribir los nombres siempre en minúsculas.
+-->
+
+<!-- El elemento raíz del que cuelga el resto de elementos en cualquier documento HTML es <html> -->
+
+    <!-- Los documentos web pueden tener una cabecera <head> de documento en la que se incluye, entre otras cosas, el título y algunos metadatos -->
+	<head>
+        <title>Hipertexto y Multimedia: tutorial de HTML</title> <!-- el titulo del documento HTML se muestra en las ventanas o pestañas de los navegadores -->
+		<link rel="stylesheet" type="text/css" href="style.css" />
+	</head>
+
+    <!-- El elemento que engloba el contenido del documento web es el cuerpo del texto <body> -->
+    <body>
+        <!-- Para marcar la estructura del documento existen numerosas etiquetas. Veamos las más importantes. -->
+
+        <!-- Para marcar los epígrafes o títulos utilizamos los elementos h1, h2, h3, h4, h5 y h6. Cada uno de ellos hace referencia a un epígrafe de distinto nivel. -->
+        <a name="inicio"><h1>Epígrafe de primer nivel</h1></a>
+        <!-- OJO: aquí hemos marcado el nombre de un enlace interno. Para más información, revisa el apartado de enlaces más abajo -->
+
+        <!-- El texto va encerrado siempre entre etiquetas de párrafo <p> -->
+		<p¡Hola! Esto es un primer párrafo de ejemplo. </p>
+
+        <h2>Epígrafe de segundo nivel</h2>
+
+
+        <p>Esto es el segundo <span class="resaltado">párrafo</span>.                                 Fíjate que es
+
+        indiferente                           el número de espacios y retornos de carro que haya entre palabras.
+        El navegador
+        mostrará
+         todo el texto
+        etiquetado                               como un <span class="resaltado">párrafo</span> bien formateado. </p><p>De hecho, puedo comenzar un tercer <span class="resaltado">párrafo</span> pegado con el segundo. El navegador lo
+        mostrará
+        correctamente
+        formateado. </p>
+
+
+        <h3>Epígrafe de tercer nivel</h3>
+
+        <!-- Si queremos forzar para que el navegador intruzca "intros" o retornos de carro tenemos que utilizar el elemento br.
+        Por ejemplo, a continuación introduzco un retorno de carro en medio de la oración etiquetada como párrafo -->
+        <p> Esto es otro ejemplo de párrafo <br></br> roto por un retorno de carro.</p>
+
+        <!-- Los elementos vacíos, como br, que no etiquetan ningún contenido, puede especificarse con etiquetas de apertura o cierre -->
+        <br></br>
+        <!-- O símplemente con una etiqueta vacía, con una barra / después del nombre. Ambas posibilidades tienen el mismo comportamiento. El W3C recomienda la segunda opción y ésa es la que utilizaremos nosotros: -->
+        <br/>
+
+        <!-- Otro elemento vacío de uso habitual es la barra horizontal, que se introduce a través del elemento hr -->
+		<hr/>
+
+        <h1>Texto formateado</h1>
+        <!-- Podemos dar formato a distintas partes del texto, p. ej. con negritas <b> y cursivas <i>. -->
+
+        <p>Este es un párrafo de ejemplo con palabras etiquetadas como <b>negrita</b>, <i>cursiva</i>,
+        <!-- podemos utilizar ambas etiquetas a la vez, pero es importante respetar el anidamiento:
+        es decir, tenemos que cerrar primero la última etiqueta que hemos abierto-->
+        y <i><b>negrita y cursiva</b></i> a la vez.</p>
+
+        <!-- El W3C recomienda, en las versiones modernas de HTML, abandonar <i> y <b> y utilizar en su lugar
+        las etiquetas <em> y <strong>: cursivas y negritas, respectivamente. -->
+        <p>Este es el mismo párrafo de ejemplo con palabras etiquetadas como <strong>negrita</strong>, <em>cursiva</em>, y <strong><em>negrita y cursiva</em></strong> a la vez.</p>
+
+        <p>Otros elementos para dar formato al texto son: <big>letra grande</big>, <small>letra pequeña</small>,
+        <ins>texto subrayado</ins>, <del>texto tachado</del>, <sup>texto en superíndice</sup>, <sub>texto en subíndice</sub>
+        y <tt>texto en fuente proporcial imitando a las antiguas máquinas de escribir</tt>.</p>
+
+        <h1>Listas de elementos</h1>
+
+        <!-- Podemos crear tres tipos distintos de listas: listas no ordenada <ul>, listas ordenadas <ol> y listas de definición <dl> -->
+        <p>Ejemplo de lista no ordenada:</p>
+
+        <ul>
+            <!-- cada elemento de la lista se etiqueta con <li> -->
+            <li>tomates</li>
+            <li>pimientos</li>
+            <li>cebollas</li>
+        </ul>
+
+        <p>Ejemplo de lista ordenada, con sublista anidada en el primer elemento:</p>
+        <ol>
+            <li class="tomate">tomates</li>
+            <!-- las listas pueden anidarse para contener sublistas -->
+            <ol>
+                <li class="tomate">raf</li>
+                <li class="tomate">pera</li>
+                <li class="tomate">de rama</li>
+            </ol>
+            <li  class="pimiento">pimientos</li>
+            <li class="cebolla">cebollas</li>
+        </ol>
+
+       <p>Ejemplo de lista de definición, con términos y definiciones:</p>
+        <dl>
+            <dt>tomates</dt>
+            <dd>las hortalizas rojas</dd>
+            <dt>pimientos</dt>
+            <dd>si son del Padrón unos pican e outros non</dd>
+        </dl>
+
+        <h1>Atributos</h1>
+
+        <p class="rojo">Hasta ahora todos los elementos HTML que hemos visto constaban de pares de etiquetas sencillas del estilo <tt>&lt;etiqueta&gt;</tt> y <tt>&lt;/etiqueta&gt;</tt>. Sin embargo, algunos elementos HTML permiten la especificación de atributos para modificar ligeramente su comportamiento o completar la información que etiquetan.</p>
+        <p class="amarillo">Los atributos están formados por pares atributos-valor que se añaden a las etiquetas de inicio del elemento. La sintaxis de los atributos es siempre la misma: <tt>&lt;etiqueta atributo1="valor1" atributo2="valor2"&gt;información etiquetada&lt;/etiqueta&gt;</tt>. </p>
+        <p class="verde">Existen numerosos atributos y no los podemos ver todos. Muchos de estos atributos se utilizan para modificar el aspecto visual de algunos elementos HTML. El W3C desaconseja su uso e insta a especificar el formato, como veremos más adelante, en las hojas de estilo. A continuación vamos a presentar algunos de los últimos elementos HTML que utilizan atributos.</p>
+
+
+        <h1>Tablas</h1>
+
+        <!-- Podemos definir una tabla a través del elemento table. Dicho elemento permite la inclusión de distintos atributos, todos ellos relacionados con el formato de la tabla.
+
+        Para empezar, podemos selección el grosor de las líneas que dibujan la tabla con el atributo border. Si seleccionamos 0, la tabla no mostrará ningún borde. Cuanto mayor sea el número, más grueso el trazo.
+
+        Con el atributo width podemos especificar el tamaño (la anchura) de la tabla. En el ejemplo, indico un tamaño relativo del 90% del espacio dispinible en la ventana del navegador.
+
+        También podemos seleccionar el tamaño en píxeles del espacio en blanco que dejamos entre el contenido de la celda y los límites de la celda (cellpadding) y el espacio que dejamos entre celdas (cellspacing).
+
+        Juguetea modificando estos valores para que veas como afectan a las propiedades de la tabla
+        -->
+
+        <table border="1" width="90%" cellpadding="5" cellspacing="2">
+            <!-- Las tablas se organizan en filas: cada fila se marca con el elemento tr (table row) -->
+             <tr>
+                <!-- Cada fila se divide en columnas. Las columnas se marca con el elemento td. En este caso, dibujamos seis-->
+                <td>fila 1, columna 1</td>
+                <td>fila 1, columna 2</td>
+                <td>fila 1, columna 3</td>
+                <td>fila 1, columna 4</td>
+                <td>fila 1, columna 5</td>
+                <td>fila 1, columna 6</td>
+            </tr>
+
+            <tr>
+                <!-- Aquí comienza la segunda fila. En este caso, solo vamos a declarar con el atributo colspan que alguna de las celdas se expanda a lo largo de varias columnas. -->
+                <td colspan="2">fila 2, columna 1 y 2</td>
+                <td colspan="3">fila 2, columna 3, 4 y 5</td>
+                <!-- de manera similar, con el atributo rowspan podemos seleccionar que una celda se expanda cubriendo el espacio de más de una fila-->
+                <td rowspan="2">fila 2 y 3, columna 6</td>
+                <!-- no declaramos explícitamente más celdas, ya que algunas se expanden ocupando más espacio -->
+            </tr>
+
+            <tr>
+                <!-- Aquí comienza la tercera fila -->
+                <td>fila 3, columna 1</td>
+                <td>fila 3, columna 2</td>
+                <td>fila 3, columna 3</td>
+                <td>fila 3, columna 4</td>
+                <td>fila 3, columna 5</td>
+                <!-- no hay sexta celda, porque la sexta de la fila anterior se expandía -->
+            </tr>
+        </table>
+
+        <p>Podemos incluir en las celdas de una tabla cualquier contenido, no solo texto. De hecho, a menudo se utilizan las tablas para organizar el espacio ocupado por imágenes.</p>
+        <h1>Imágenes</h1>
+        <!-- Podemos inclur imágenes a través del elemento HTML img. Dicho elemento es vacío, no etiqueta nada, por lo debemos utilizar una única etiqueta.
+
+        El fichero de la imagen se especifica a través del atributo src. Nótese que el valor de este atributo puede ser la ruta al fichero de la imagen o un enlace a una imagen que esté colgada en una web, como hago yo en este ejemplo.
+        Con el atributo border especificamos el grosor del borde de la imagen. En este caso, el valor está a 0 y en consecuencia la imagen aparece sin borde.
+
+        Con los atributos heigth y width especificamos el tamaño (alto y ancho) de la imagen. En el ejemplo, yo solo especifico la anchura de la imagen (600 píxeles). Como no especifico altura, el navegador la ajusta para mantener las proporciones originales de la imagen.
+
+        Por último, con el objetivo de mejorar la accesibilidad de las páginas web, el W3C aconseja añadir en todo elemento img un atributo alt en el que incluímos una descripción, a modo de texto alternativo.
+        -->
+
+        <p><img src="http://imagenesfotos.com/wp-content/2012/01/Jellyfish.jpg" border="0" width="600" alt="Una medusa haciéndose unos largos" /></p>
+		<img src="http://imagenesfotos.com/wp-content/2012/01/Jellyfish.jpg" border="0" width="200" alt="Una medusa haciéndose unos largos" />
+        <h1>Hiperenlaces</h1>
+        <p>Básicamente, existen tres tipos hiperenlaces:</p>
+        <ul>
+            <!-- Para etiquetar enlaces (o vínculos) utilizamos el elemento a (anchor) y el atributo href para indicar la página web, fichero o recurso destino del enlace.
+            Otro atributo utilizado habitualmente es target, el cual nos permite configurar algunos parámetros relacionados con el modo en el que se visualizará el enlace. En el ejemplo target="_blank" abrirá el enlace en una ventana o pestaña aparte.
+            -->
+
+            <li>vínculos que apuntan a un sitio web externo, como este que <a href="http://imagenesfotos.com/imagenes-de-muestra-windows-7/" target="_blank">apunta a la página donde encontré la foto de la medusa</a>.</li>
+
+            <!-- Cuando los enlaces apuntan a secciones del documento actual, necesitamos:
+
+            - etiquetar el punto de destino del enlace con el elemento a y el atributo name="nombre". Fíjate en la parte superior de este fichero de ejemplo.
+            - incluir en el punto de origen del enlace de la manera habitual, indicando en el atributo href el nombre del destino y añadiendo una almohadilla: en este ejemplo, href="#inicio".
+            -->
+
+            <li>vínculos que apuntan a determinadas secciones del documento HTML actual, como este enlace que te lleva <a href="#inicio">al inicio del documento</a>.</li>
+            <!-- cuando enlazar un fichero ubicado en el ordenador actual, simplemente indicamos la ruta completa hasta el destino: Recuerda que podemos indicar las rutas de dos maneras diferentes:
+
+            - rutas absolutas: indicamos el camino completo hasta el fichero de destino, p. ej.: C:/Documentos/asignaturas/Hipertexto/docs/ejemploHTML.html
+            - rutas relativas: indicamos el camino hasta el fichero de destino partiendo del fichero actual, p. ej.: docs/ejemploHTML.html
+            -->
+
+            <li>vínculos que apuntan a otros documentos o carpetas dentro de tu ordenador, como este enlace que te muestra <a href="./">el contenido del directorio en el que guardas este tutorial</a>.</li>
+        </ul>
+
+        <p>Pero también podemos crear vínculos para mandar mensajes de correo-e. Si tienes dudas, <a href="mailto:v.peinado@filol.ucm.es">escríbeme</a>.</p>
+
+		<p>Haz clic en <a href="https://youtu.be/4Ca6x4QbpoM">un vídeo de youtube</a> o reprodúcelo aquí mismo.</p>
+
+		<p><iframe width="560" height="315" src="https://www.youtube.com/embed/4Ca6x4QbpoM" frameborder="0" allowfullscreen></iframe></p>
+
+		<p>Puedes escuchar esta canción de <a href="https://play.spotify.com/track/0MnIQOqJq0hFdq5t7d3zs9">Marilyn Manson en Spotify</a> o pinchando aquí abajo.</p>
+
+		<p><iframe src="https://embed.spotify.com/?uri=spotify:track:0MnIQOqJq0hFdq5t7d3zs9" width="300" height="380" frameborder="0" allowtransparency="true"></iframe></p>
+
+		<p>Ídem con esta cancioncita de <a href="https://soundcloud.com/phantasm-sounds/one-way-trigger-1">los Strokes</a>.</p>
+		<p><iframe width="100%" height="450" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/111472360&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe></p>
+
+	</body>
+
+</html>
