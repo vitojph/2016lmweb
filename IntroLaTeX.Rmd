@@ -1,0 +1,181 @@
+---
+title: "Lenguajes de Marcas: LaTeX | LMTW"
+author: "Víctor Peinado"
+date: "29 de marzo - 13 de abril de 2016"
+output: rmarkdown::tufte_handout
+---
+
+# Referencias
+
+- *The Not So Short Introduction to LaTeX*.[^notshortintro]
+
+- *Manual de LaTeX*.[^wikibook-latex-es]
+
+- *A Guide to LaTeX*.[^wikibook-latex-en]
+
+- *LaTeX for Linguists*.[^latex-ling]
+
+- *LaTeX for Mathematics*.[^latex-maths]
+
+
+# Introducción a \LaTeX
+
+\LaTeX\ no es un procesador de textos WYSIWYG\marginnote{WYSIWYG: \textit{What You See is What You Get}} como MS Word o el Writer de LibreOffice. Es más bien un *lenguaje de programación* que permite escribir un texto de forma estructurada y convertirlo en documentos para ser leídos o impresos con una gran calidad tipográfica.
+
+\LaTeX\ combina la sencillez de edición, la calidad tipográfica y la facilidad para garantizar una buena estructura y organización del documento, todo esto de manera casi automática. 
+
+El contenido del texto que se edita no es el resultado final. Antes de visualizar el resultado final es necesario convertir el código \LaTeX\ en un formato visualizable como PS, PDF o HTML (pero también, RTF o DOC).
+
+
+## Cambio de chip
+
+¿Qué ventajas tiene este modo de producir documentos frente a los sistemas WYSIWYG?
+
+Pensemos en elaborar un documento único de 300 páginas compilado a partir de una docena de capítulos diferentes y separados en distintos ficheros, pero mostrando índices únicos de capítulos, tablas e imágenes, bibliografía, etc.
+
+**\LaTeX\ fuerza al autor a ser estructurado**, centrándose en el contenido y confiando la forma a la propia herramienta, que lo hace estupendamente. No tiene más que concentrarse en el contenido del documento y en señalar unas cuantas instrucciones para que \LaTeX\ haga lo que las instrucciones le indiquen: hacer una portada, un índice de contenidos, poner las notas a pie de página, insertar una imagen, etc. 
+
+En lugar de seleccionar manualmente el tipo de fuente que usaremos para el título de una sección, su tamaño y su estilo (y de recordar todo esto para cuando llegue el momento de iniciar otra sección), en \LaTeX\ sólo tenemos que indicarle que dentro del documento que en un determinado lugar se inicia una sección.
+
+```latex
+\section{Nombre de la sección}
+```
+
+Y con ello obtendremos un verdadero título de sección con todo y su numeración, con independencia de las secciones que podamos insertar antes o después de esta instrucción de estructura del texto.
+
+De especial interés para los lingüistas, \LaTeX\ nos proporciona un conjunto de herramientas muy potente que nos permite crear fácilmente y con calidad profesional documentos con texto en distintos alfabetos, glosas con información morfosintáctica, símbolos fonéticos, árboles sintácticos y de dependencias, formalismos semánticos, etc.
+
+Por último, \LaTeX\ es casi un estándar en la producción de documentación científica: artículos para congresos y revistas, presentaciones, pósters, tesis doctorales y de máster, informes técnicos, etc.
+
+
+## Escritura de documentos en \LaTeX
+
+1. Para escribir documentos en \LaTeX[^escribir-docs] es necesario utilizar un editor de textos capaz de crear ficheros en formato `.tex`.
+
+2. El archivo fuente `.tex` contendrá todas las instrucciones que serán procesadas por \LaTeX\ para producir un archivo de salida.
+
+3. Para crear el fichero de salida, tenemos que *compilar* el fichero fuente `.tex`.\marginnote{Y generar un fichero pdf, por regla general. Pero no solo.} 
+
+
+
+# Instalación de \LaTeX\ 
+
+Si tienes interés en instalar por tu cuenta las herramientas de \LaTeX\ en alguno de tus ordenadores, sigue las instrucciones:
+
+- Instalación en Windows[^install-win]
+
+- Instalación en OS X[^install-osx]
+
+- Instalación en Linux[^install-linux]
+ 
+ 
+Afortunadamente para vosotros no vamos a instalar nada. Vamos a hacer todas las pruebas usando herramientas web para editar \LaTeX\ desde un navegador y generar documentos en PDF, a saber: \marginnote{Juguetea y aprende a manejarte con los dos.}
+
+- Overleaf[^overleaf]
+
+- sharelatex[^sharelatex]
+
+
+# Estructura de un documento \LaTeX
+
+La estructura de un documento \LaTeX[^estructura] se divide en **preámbulo** y **cuerpo de texto**.
+
+En el **preámbulo** se escriben las instrucciones fundamentales que indican a \LaTeX\ qué clase de documento[^clase-documento] se va a escribir (*article, book, report, slides*, etc.) y qué características va a tener éste:
+
+```latex
+\documentclass{article}
+```
+
+Además de indicar la clase de documento que queremos para nuestro texto, debemos indicar los paquetes que vamos a necesitar:
+
+```latex
+\usepackage{paquete}
+```
+
+Ya veremos en ejemplos concreto qué paquetes necesitamos incluir. 
+
+
+El **cuerpo del documento** inicia con la instrucción
+
+```latex
+\begin{document}
+```
+
+y culmina con la instrucción:
+
+```latex
+\end{document}
+```
+
+
+Todo lo que se escriba con posterioridad a esta instrucción será ignorado y no se compilará. El cuerpo del documento consiste en prácticamente todo lo que aparecerá en nuestro texto.
+
+
+# Escribiendo texto
+
+A continuación repasamos cómo se manejan diferentes características del texto, como:
+
+- Espacios[^espacios] y caracteres especiales.[^especiales]
+
+- Tamaños, estilos y tipos de letra.[^tamaños]
+
+- Alineación del texto.[^texto]
+
+- Portadas.[^portadas]
+
+\newpage
+
+- Estructurar el documento en partes, capítulos, secciones.[^caps]
+
+- Listas de elementos.[^listas]
+
+- Tablas.[^tablas]
+
+- Notas a pie.[^notas]
+
+- Referencias y citas.[^refs]
+
+
+# \LaTeX\ para Lingüistas
+
+Como hemos comentado antes, \LaTeX\ propociona un marco de trabajo excelente si necesitamos crear documentos que contengan símbolos fonéticos, árboles sintácticos y otros formalismos utilizados habitualmente en Lingüística.
+
+Para comenzar, revisa:
+
+- El listado de herramientas de Lingüística para \LaTeX.[^latex-ling]
+- La web *LaTeX for Linguists*.[^latex4linguistics]
+- La documentación del paquete TIPA,[^tipa] el sistema para incluir símbolos del *International Phonetic Alphabet* (IPA).
+
+
+
+[^notshortintro]: *The Not So Short Introduction to LaTeX* https://tobi.oetiker.ch/lshort/lshort.pdf
+[^wikibook-latex-es]: *Manual de LaTeX* http://es.wikibooks.org/wiki/Manual_de_LaTeX
+[^wikibook-latex-en]: *A Guide to LaTeX* http://en.wikibooks.org/wiki/LaTeX
+[^latex-ling]: Linguistics Packages for LaTeX http://en.wikibooks.org/wiki/LaTeX/Linguistics
+[^latex4linguistics]: The LaTeX for Linguists Home Page http://www.essex.ac.uk/linguistics/external/clmt/latex4ling
+[^tipa]: TIPA: a System for Processing Phonetic Symbols in LaTeX http://www.tug.org/tugboat/tb17-2/tb51rei.pdf
+[^latex-maths]: LaTeX for Mathematics http://en.wikibooks.org/wiki/LaTeX/Mathematics
+
+[^escribir-docs]: La escritura en LaTeX http://es.wikibooks.org/wiki/Manual_de_LaTeX/Datos_preliminares/La_escritura_en_LaTeX
+[^estructura]: La estructura de un documento en LaTeX http://es.wikibooks.org/wiki/Manual_de_LaTeX/La_estructura_de_un_documento_en_LaTeX/El_pre%C3%A1mbulo_y_el_cuerpo_del_documento
+[^clase-documento]: Clases de documentos en LaTeX http://es.wikibooks.org/wiki/Manual_de_LaTeX/La_estructura_de_un_documento_en_LaTeX/Clases_de_documento_y_algunos_paquetes_comunes
+
+[^espacios]: Espacios http://es.wikibooks.org/wiki/Manual_de_LaTeX/Escribiendo_texto/Espacios
+[^especiales]: Caracteres especiales http://es.wikibooks.org/wiki/Manual_de_LaTeX/Escribiendo_texto/Caracteres_especiales
+[^tamaños]: Tamaños, estilos y tipos de letra http://es.wikibooks.org/wiki/Manual_de_LaTeX/Escribiendo_texto/Tama%C3%B1os,_estilos_y_tipos_de_letra
+[^texto]: Alineación de texto http://es.wikibooks.org/wiki/Manual_de_LaTeX/Escribiendo_texto/Alineaci%C3%B3n_del_texto
+[^portadas]: Portadas de
+ documento http://es.wikibooks.org/wiki/Manual_de_LaTeX/Escribiendo_texto/Portada_del_documento
+[^caps]: Capítulos y secciones http://es.wikibooks.org/wiki/Manual_de_LaTeX/Escribiendo_texto/Cap%C3%ADtulos_y_secciones
+[^refs]: Referencias http://es.wikibooks.org/wiki/Manual_de_LaTeX/Escribiendo_texto/Referencias
+[^notas]: Notas a pie http://es.wikibooks.org/wiki/Manual_de_LaTeX/Escribiendo_texto/Notas_al_pie
+[^listas]: Listas http://es.wikibooks.org/wiki/Manual_de_LaTeX/Escribiendo_texto/Entornos_de_enumeraci%C3%B3n
+[^tablas]: Tablas http://es.wikibooks.org/wiki/Manual_de_LaTeX/Escribiendo_texto/Tablas
+
+[^overleaf]: https://www.overleaf.com/
+[^sharelatex]: https://www.sharelatex.com/
+
+
+[^install-win]: http://es.wikibooks.org/wiki/Manual_de_LaTeX/Datos_preliminares/Instalaci%C3%B3n_en_MS_Windows
+[^install-osx]: http://es.wikibooks.org/wiki/Manual_de_LaTeX/Datos_preliminares/Instalaci%C3%B3n_en_OS_X
+[^install-linux]: http://es.wikibooks.org/wiki/Manual_de_LaTeX/Datos_preliminares/Instalaci%C3%B3n_en_Linux
