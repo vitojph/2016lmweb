@@ -1,0 +1,497 @@
+---
+title: "Lenguajes de Marcas: HTML | LMTW"
+author: "Víctor Peinado"
+date: "18-27 de abril de 2016"
+output: rmarkdown::tufte_handout
+---
+
+# Referencias
+
+Hay miles de tutoriales, pero dos buenas referencias son:
+
+- Tutorial de HTML en W3Schools.[^xhtml]
+- Tutorial de HTML en HTML.net.[^html]
+
+Recuerda que hay varias versiones de HTML. Este tutorial trata de cubrir los primeros conceptos de HTML 4.1, con algunas recomendaciones típicas de versiones más modernas como XHTML 1.0. 
+
+Si encuentras tutoriales modernos es posible que hagan referencia a HTML5[^html5], la última y más moderna versión de HTML. *Todavía* no nos interesa esta versión.
+
+
+# Introducción a HTML
+
+HTML (*Hypertext Mark-up Language*) es un lenguaje de marcas orientado a codificar documentos para la Web. 
+
+Su primera versión fue descrita en 1991 cuando Tim Berners-Lee trabajaba como investigador en el CERN. Para una descripción general, consulta la entrada sobre HTML en Wikipedia[^html-wiki].
+
+El W3C[^w3c] es el organismo encargado de publicar, entre otras cosas, las especificaciones de HTML. 
+
+## Evolución de HTML
+
+Desde los años 90 se han publicado varias versiones de HTML. Las primeras especificaciones estaban orientadas únicamente a dar formato a documentos hipertextuales. 
+
+Con el paso del tiempo, las posteriores versiones han tratado de estandarizar los medios que se utilizan para publicar contenidos en la Web, accesibles desde cualquier dispositivo (ordenadores, móviles, tablets) y por cualquier persona (discapacitados o no). 
+
+La característica general de la evolución del HTML que más nos interesa a nosotros es que los elementos HTML de las primeras versiones simplemente daban formato. A medida que ha pasado el tiempo, se han ido desechando los elementos de formato para adoptar elementos que marcan la estructura. 
+
+Los documentos HTML modernos tratan de separar la semántica por un lado y el formato por otro.
+
+
+# Estructura de un documento HTML
+
+Cualquier documento HTML está formado por varios elementos HTML[^elementos]. Todo elemento está compuesto por:
+
+- una etiqueta de inicio: las etiquetas consisten en una palabra prefijada que aparece *encerrada* entre paréntesis angulares, como en `<etiqueta>`.
+- un contenido etiquetado: que puede ser una cadena vacía, una cadena de texto o incluso otro elemento HTML.
+- una\marginnote{¡OJO! Cuando los elementos no etiquetan contenido alguno, es posible especificar la etiqueta de inicio y final con el formato \texttt{<etiqueta/>}.} etiqueta de fin o cierre de elemento: las etiquetas de cierre se indican con una barra / antes del nombre `</etiqueta>`.
+
+
+```html
+<etiqueta></etiqueta> 
+    
+<!-- es equivalente a --> 
+    
+<etiqueta/>
+```
+
+Ambas posibilidades tienen el mismo comportamiento. El W3C recomienda la segunda opción y ésa es la que utilizaremos.
+
+Nótese que un elemento HTML puede etiquetar a otro(s) elementos(s) HTML. Es decir, existe una estructura jerárquica, con elementos *hijo* que dependen o cuelgan de elementos *padre*. 
+
+Aunque HTML no es sensible a mayúsculas o minúsculas y los navegadores entienden ambos tipos de etiquetas, el W3C recomienda escribir los nombres siempre en minúsculas.
+
+# Elementos HTML
+
+## Comentarios
+
+Como en otros lenguajes de programación, es posible incluir en nuestro código comentarios dirigidos a aclarar distintos aspectos a las personas que manipulan el código.
+
+Cualquier cosa que aparezca entre símbolos de comentario (aunque sean elementos HTML perfectamente válidos) será ignorado por el navegador y no tendrá ningún efecto en la estructura de la página-
+
+```html
+<!-- Esto es un comentario -->
+
+<!-- Los comentarios 
+pueden ocupar
+
+varias líneas. Da igual. 
+
+El navegados los ignora. -->
+```
+
+## Elemento raíz: `html`
+
+El elemento raíz del que cuelga el resto de elementos en cualquier documento HTML es `html`.  Cualquier documento HTML estará encerrado en un par de etiquetas `html`.
+
+```html
+    <html>
+    <!-- tras esta etiqueta comienza propiamente el documento -->
+
+    <!-- y el documento termina aquí -->
+    </html>
+```
+
+## Cabecera de documento: `head`
+
+Los documentos web pueden tener una cabecera[^cabecera] `head` de documento en la que se incluye, entre otras cosas, el título y algunos metadatos[^metadatos]:
+
+```html
+	<head>
+	    <!-- el titulo del documento HTML se muestra en las ventanas 
+	    o pestañas de los navegadores -->
+        <title>LMTW: tutorial de HTML</title> 
+		<meta name="description" content="tutorial de HTML"/>
+        <meta name="keywords" content="HTML, CSS, tutorial, UCM"/>
+        <meta name="author" content="Víctor Peinado"/>
+	</head>
+```
+
+## Cuerpo del documento: `body`
+
+El elemento que engloba el contenido del documento web es el cuerpo del texto `body`.
+
+```html
+    <html>
+
+	<head>
+        <title>LMTW: tutorial de HTML</title> 
+		<meta name="description" content="tutorial de HTML"/>
+	</head>
+
+    <body>
+        <!-- aquí comienza el cuerpo del texto -->
+
+    </body>
+    </html>
+```
+
+
+## Epígrafes `h1`, `h2`, `h3`... y párrafos `p`
+
+Para marcar los epígrafes o títulos[^epigrafes] utilizamos los elementos `h1, h2, h3, h4, h5` y `h6`. Cada uno de ellos hace referencia a un epígrafe de distinto nivel.
+
+```html
+    <h1>Epígrafe de primer nivel</h1>
+```
+
+El texto va etiquetado con el elemento párrafo[^parrafo] `p`.
+
+```html
+    <h1>Epígrafe de primer nivel</h1>
+	<p>Esto es un primer párrafo de ejemplo.</p>
+
+    <h2>Epígrafe de segundo nivel</h2>
+    <p>Esto es el segundo párrafo</p>.
+```    
+
+## Comportamiento de los párrafos   
+    
+```html
+    <p>
+                                Fíjate que es 
+        
+        indiferente        número de espacios y retornos de carro 
+        que haya entre palabras.
+        El navegador 
+        mostrará 
+         todo el texto 
+        etiquetado     como un párrafo bien formateado. </p><p>De hecho, 
+        
+        puedo comenzar un tercer párrafo pegado con el segundo. El navegador 
+        lo             mostrará       correctamente  formateado. </p>
+```
+
+
+## Saltos de línea `br` y líneas horizontales `hr`
+        
+Si queremos forzar para que el navegador intruzca "intros" o retornos de carro tenemos que utilizar el elemento `br`.
+
+Por ejemplo, a continuación introduzco un retorno de carro en medio de la oración etiquetada como párrafo.
+
+```html
+    <p>Esto es otro ejemplo de párrafo <br/> roto por un retorno de carro.</p>
+```
+
+Otro elemento de uso habitual para separar porciones de texto es la barra horizontal, que se introduce a través del elemento `hr`. 
+    
+```html
+    <hr/>
+```
+
+
+## Texto formateado: negritas y cursivas
+
+Podemos dar formato[^formato] a distintas partes del texto, p. ej. con negritas `b` y cursivas `i`.
+
+```html
+    <p>Este es un párrafo de ejemplo con palabras etiquetadas 
+    como <b>negrita</b>, <i>cursiva</i>,
+```
+
+Podemos utilizar ambas etiquetas a la vez, pero es importante respetar el anidamiento de los elementos, es decir, tenemos que cerrar primero la última etiqueta que hemos abierto:
+
+```html
+    <p>ejemplo de texto en <i><b>negrita y cursiva</b></i> a la vez.</p>
+```
+
+El W3C recomienda, en las versiones modernas de HTML, abandonar los elementos `i` y `b` y utilizar en su lugar los elementos `em` y `strong` (cursivas y negritas), respectivamente. 
+
+```html
+    <p>Este es el mismo párrafo de ejemplo con palabras etiquetadas como 
+    <strong>negrita</strong>, <em>cursiva</em>, y 
+    <strong><em>negrita y cursiva</em></strong> a la vez.</p>
+```
+
+No es más que un movimiento a favor de abandonar los elementos de formato frente a los elementos con semántica.
+
+## Otros elementos de formato
+
+Otros elementos para dar formato al texto son: 
+
+```html
+    <p><big>letra grande</big>, <small>letra pequeña</small>, 
+    <ins>texto subrayado</ins>, <del>texto tachado</del>, 
+    <sup>texto en superíndice</sup>, <sub>texto en subíndice</sub> 
+    y <tt>texto en fuente de ancho fijo imitando a las antiguas máquinas 
+    de escribir</tt>.</p>
+```
+
+Como hemos mencionado antes, los documentos HTML modernos han ido abandonando el uso de este tipo de elementos de formato en favor de las hojas de estilo, como veremos más adelante. 
+
+## Listas
+
+En HTML podemos definir distintos tipos de listas[^listas]. Veamos algunos ejemlos.
+
+```html
+    <p>Ejemplo de lista no ordenada:</p>
+
+    <ul>
+    <!-- cada elemento de la lista se etiqueta con <li> -->
+        <li>tomates</li>
+        <li>pimientos</li>
+        <li>cebollas</li>
+    </ul>
+```
+
+
+```html
+    <p>Ejemplo de lista ordenada, con sublista anidada 
+    en el primer elemento:</p>
+    <ol>
+        <li>tomates</li>
+        <!-- las listas pueden anidarse para contener sublistas -->
+        <ol>
+            <li>raf</li>
+            <li>pera</li>
+            <li>de rama</li>
+        </ol>
+        <li>pimientos</li>
+        <li>cebollas</li>
+    </ol>
+```
+
+
+```html
+    <p>Ejemplo de lista de definición, con términos y definiciones:</p>
+    <dl>
+        <dt>tomates</dt>
+        <dd>las hortalizas rojas</dd>
+        <dt>pimientos</dt>
+        <dd>si son del Padrón unos pican e outros non</dd>
+    </dl>
+```
+
+
+## Atributos
+
+Hasta ahora todos los elementos HTML que hemos visto constaban de pares de etiquetas sencillas del estilo `<etiqueta>` y `</etiqueta>`. 
+
+Sin embargo, algunos elementos HTML permiten la especificación de atributos[^atributos] para modificar ligeramente su comportamiento o completar la información que etiquetan.
+
+Los atributos están formados por pares *atributo-valor* que se añaden a las etiquetas de inicio del elemento. 
+
+La sintaxis de los atributos es siempre la misma: 
+
+```html
+    <etiqueta atributo1="valor1" atributo2="valor2">
+    información etiquetada
+    </etiqueta>
+```
+
+Existen numerosos atributos y no los podemos ver todos. Muchos de estos atributos se utilizan para modificar el aspecto visual de algunos elementos HTML. 
+
+El W3C desaconseja su uso e insta a especificar el formato, como veremos más adelante, en las hojas de estilo. A continuación vamos a presentar algunos de los últimos elementos HTML que utilizan atributos.
+
+## Tablas `table`
+
+Podemos definir una tabla[^tabla] a través del elemento `table`. Dicho elemento permite la inclusión de distintos atributos, todos ellos relacionados con el formato de la tabla. 
+        
+Para empezar, podemos selección el grosor de las líneas que dibujan la tabla con el atributo `border`. Si seleccionamos `0`, la tabla no mostrará ningún borde. Cuanto mayor sea el número, más grueso el trazo.
+
+Con el atributo `width` podemos especificar el tamaño (la anchura) de la tabla. En el ejemplo, indico un tamaño relativo del 90% del espacio dispinible en la ventana del navegador.
+
+También podemos seleccionar el tamaño en píxeles del espacio en blanco que dejamos entre el contenido de la celda y los límites de la celda (`cellpadding`) y el espacio que dejamos entre celdas (`cellspacing`). 
+
+
+```html
+    <table border="1" width="90%" cellpadding="5" cellspacing="2">
+    <!-- Las tablas se organizan en filas: 
+    cada fila se marca con el elemento tr (table row) -->
+         <tr>
+         <!-- Cada fila se divide en columnas. 
+         Las columnas se marca con el elemento td -->
+             <td>fila 1, columna 1</td>
+             <td>fila 1, columna 2</td>
+             <td>fila 1, columna 3</td>
+         </tr>
+         <tr>
+         <!-- Aquí comienza la segunfa fila -->
+             <td>fila 2, columna 1</td>
+             <td>fila 2, columna 2</td>
+             <td>fila 2, columna 3</td>
+         <tr>
+     </table>
+```
+
+Otro ejemplo de tabla, es este caso, fusionando celdas. Fíjate en los atributos `colspan` y `rowspan`.
+
+```html
+    <table border="1" width="90%" cellpadding="5" cellspacing="2">
+    <!-- Las tablas se organizan en filas: 
+    cada fila se marca con el elemento tr (table row) -->
+         <tr>
+             <td>fila 1, columna 1</td>
+             <td>fila 1, columna 2</td>
+             <td>fila 1, columna 3</td>
+         </tr>
+         <tr>
+         <!-- Aquí comienza la segunda fila.    -->
+             <td colspan="2">fila 2, columna 1 y 2</td>
+             <td rowspan="2">fila 2 y 3, columna 3</td> 
+         </tr>
+         <tr>
+         <!-- Aquí comienza la tercera fila -->
+             <td>fila 3, columna 1</td>
+             <td>fila 3, columna 2</td>
+         </tr>
+     </table>
+```
+
+Podemos incluir en las celdas de una tabla cualquier contenido, no solo texto. De hecho, a menudo se utilizan las tablas para organizar el espacio ocupado por imágenes.
+        
+        
+# Imágenes
+
+Podemos inclur imágenes[^imagenes] a través del elemento `img`. Dicho elemento es vacío, no etiqueta nada, por lo debemos utilizar una única etiqueta.
+
+La ruta al fichero de la imagen se especifica a través del atributo `src`. Nótese que el valor de este atributo puede ser la ruta al fichero de la imagen o un enlace a una imagen que esté colgada en una web, como hago yo en este ejemplo. 
+
+Con el atributo `border` especificamos el grosor del borde de la imagen. En este caso, el valor está a 0 y en consecuencia la imagen aparece sin borde. 
+        
+Con los atributos `heigth` y `width` especificamos el tamaño (alto y ancho) de la imagen. En el ejemplo, yo solo especifico la anchura de la imagen (600 píxeles). Como no especifico altura, el navegador la ajusta para mantener las proporciones originales de la imagen.
+
+Por último, con el objetivo de mejorar la accesibilidad de las páginas web, el W3C aconseja añadir en todo elemento img un atributo `alt` en el que incluímos una descripción, a modo de texto alternativo.
+
+```html
+    <img src="http://imagenesfotos.com/wp-content/2012/01/Jellyfish.jpg" 
+    border="0" width="600" alt="Una medusa haciéndose unos largos" />
+```
+
+# Hiperenlaces `a`
+
+Para etiquetar enlaces[^enlaces] (o vínculos) utilizamos el elemento `a` (*anchor*) junto con:
+
+- el atributo `href` para indicar la página web, fichero o recurso destino del enlace.
+- otros atributos como `target` para indicar el modo en el que se abrirá el
+  enlace.
+
+En el ejemplo, la palabra *UCM* es un enlace que apunta a la web de la universidad y se abrirá en una ventana o pestaña aparte.
+
+```html
+    <p>Visita la <a href="http://www.ucm.es" target="_blank">UCM</a>.</p>
+```
+
+## Hiperenlaces a sitios externos
+
+Para incluir enlaces a otros recursos en red, simplemente indicamos la URL como
+valor del atributo `href`.
+
+```html
+    <p>Este enlace <a href="imagenes-de-muestra-windows-7/">apunta a 
+    la página de la foto de la medusa</a>.</p>
+```
+
+## Hiperenlaces a recursos en el ordenador
+
+Cuando incluímos vínculos que apuntan a otros documentos o carpetas dentro de nuestro ordenador, simplemente indicamos la ruta completa hasta el destino como valor del atributo `href`.
+
+Recuerda que podemos indicar las rutas de dos maneras diferentes:
+            
+- rutas absolutas: indicamos el camino completo hasta el fichero de destino, p. ej.: `C:/Documentos/asignaturas/Hipertexto/docs/ejemploHTML.html`
+- rutas relativas: indicamos el camino hasta el fichero de destino partiendo del fichero actual, p. ej.: `docs/ejemploHTML.html`
+
+Veamos un ejemplo:
+
+```html
+    <p><a hef="./">Este enlace</a> muestra el contenido de la carpeta en la 
+    que has descargado esta presentación.</p>
+```
+
+## Hiperenlaces internos en un documento
+
+También podemos incluir enlaces que apunten a secciones del documento actual y nos permitan navegar por las distintas secciones. Para ello necesitamos:
+
+- etiquetar el punto de destino del enlace con el elemento `a` y el atributo `name="nombre"`.
+- incluir en el punto de origen del enlace de la manera habitual, indicando en el atributo `href` el nombre del destino y añadiendo una almohadilla: en este ejemplo, `href="#cap1"`.
+
+Veamos un ejemplo:
+
+```html
+    <a name="cap1"><h1>Capítulo 1</h1></a> 
+    <!-- aquí marco el destino del enlace-->
+    <p>Aquí comienza el primer párrafo del capítulo 1.</p>    
+    <p>Y por aquó continúa... </p>
+
+    <!-- Más contenidos -->
+    
+    <h1>Capítulo 2</h1>
+    <p>Aquí comienza el primer párrafo del capítulo 2. E incluyo un 
+    <a href="#cap1">enlace al capítulo 1</a>.</p>    
+```
+
+## Otros hiperenlaces
+
+También podemos crear vínculos para mandar mensajes de correo-e. 
+
+```html
+    <p>Si tienes dudas, <a href="mailto:v.peinado@filol.ucm.es">escríbeme un 
+    mensaje de correo</a>.</p>
+```
+
+
+## Enlazando imágenes
+
+Podemos incluir en nuestras páginas web otro tipo de enlaces y contenido
+multimedia. 
+
+Por ejemplo, enlaces a galerías de imágenes:
+
+```html
+    <p>Me encantan las <a href="http://flic.kr/s/7sFD">
+    fotos de _rebekka</a>.</p>
+    
+    <p>Aquí puedes verlas en modo 
+    <a href="http://www.flickr.com/photos/rebba/sets/1260435/show/">
+    pase de diapositivas</a>.</p>
+```
+
+## Enlazando audio
+
+Y lo mismo para música:
+
+```html
+    <p>Escucha <a href="http://open.spotify.com/track/0MnIQOqJq0hFdq5t7d3zs9">mi canción favorita</a> 
+    de esta semana.</p>
+
+    <p>O disfrútala directamente desde aquí: </p>
+
+    <iframe src="https://embed.spotify.com/?uri=spotify:track:0MnIQOqJq0hFdq5t7d3zs9" 
+    width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+
+```
+\marginnote{¡OJO! \texttt{iframe} es un elemento especial que nos permite incrustar un documento HTML completo dentro de otro documento HTML.}
+
+
+
+## Enlazando vídeo
+
+O vídeo:
+
+```html
+    <p>Haz clic en <a href="https://youtu.be/4Ca6x4QbpoM">
+    este vídeo</a>.</p>
+	
+    <p>O visualízalo directamente aquí:</p>
+    
+    <iframe width="560" height="315" 
+    src="https://www.youtube.com/embed/4Ca6x4QbpoM" 
+    frameborder="0" allowfullscreen></iframe>
+```
+
+
+[^xhtml]: http://www.w3schools.com/html/html_xhtml.asp
+[^html]:  http://es.html.net/tutorials/html/
+[^html5]: http://www.w3schools.com/html/default.asp
+[^html-wiki]: http://es.wikipedia.org/wiki/HTML
+[^w3c]: http://www.w3c.es
+[^elementos]: http://www.w3schools.com/html/html_elements.asp
+[^cabecera]: http://www.w3schools.com/html/html_head.asp
+[^metadatos]: http://www.w3schools.com/tags/tag_meta.asp
+[^epigrafes]: http://www.w3schools.com/html/html_headings.asp
+[^parrafo]: http://www.w3schools.com/html/html_paragraphs.asp
+[^formato]: http://www.w3schools.com/html/html_formatting.asp
+[^listas]: http://www.w3schools.com/html/html_lists.asp
+[^atributos]: http://www.w3schools.com/html/html_attributes.asp
+[^tabla]: http://www.w3schools.com/html/html_tables.asp
+[^imagenes]: http://www.w3schools.com/html/html_images.asp
+[^enlaces]: http://www.w3schools.com/html/html_links.asp
+[^iframe]: http://www.w3schools.com/html/html_iframe.asp
